@@ -1,0 +1,53 @@
+
+//LeetCode : https://leetcode.com/problems/validate-binary-search-tree/discussion/
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isValidBST(TreeNode root) {
+ 
+
+if(root == null)
+{
+    return  true;
+}
+
+if(root.left != null )  // check left first is not null
+{
+    if(root.left.val >= root.val)  //check left  is greater than root.val i.e not valid BST
+    { 
+     return false ;
+    }
+     boolean left = isValidBST(root.left);//check left  is greater than root.val
+}
+//else return true and go to below code for checking right side tree
+
+ if(root.right != null )  // check right  side  is not null
+{
+    if(root.right.val <= root.val)//check right  is lesser than root.val i.e not valid BST
+    { 
+     return false ;
+    }
+     boolean right = isValidBST(root.right);
+}
+
+//else return true and no invalid tree found so correct BST
+return true;
+   
+
+        
+    }
+}
