@@ -1,0 +1,45 @@
+//Day 1  : 01 Jan 2023
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2)
+     {
+
+ListNode dummyHead = new ListNode(0);  // Dummy Node Created
+
+ListNode p = l1 ,q=l2 , curr  = dummyHead ;
+int carry = 0;
+while(p !=null ||  q !=null)   // One of the condition should be true
+{
+
+int x = ( p != null )    ?  p.val: 0 ;   // if next P element in null then consider its value Zero ;
+int y = ( q != null )    ?  q.val: 0 ;// if next Q element in null then consider its value Zero ;
+
+int SumDigit = carry + x + y ; // add Earlier Carry and P + Q ;
+carry =  SumDigit /10 ;   // if SumDigit number is two Digit then pass "first Digit" to carry  
+
+curr.next = new ListNode(SumDigit % 10); // to get the last Digit(ie second Digit) from the SumDigit 
+
+curr = curr.next ;  // Move curr cursor to next element 
+if(p != null){  p =  p.next ;} // Move  p cursor to next element 
+if(q != null){q =  q.next ;}// Move  q cursor to next element 
+
+}
+if(carry > 0) // if all element are added then last carry will be consider as the seperate ListNode.
+{
+    curr.next = new ListNode(carry);
+}
+return dummyHead.next ; // return dummyhead.Next . because dummyhead is at 0 (so ignore it othe index)
+
+}
+}
