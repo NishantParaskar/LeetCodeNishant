@@ -1,0 +1,33 @@
+//Link : https://leetcode.com/problems/majority-element/submissions/869898893/
+
+//Code
+class Solution {
+    public int majorityElement(int[] nums) {
+
+//used Moore Voting Algorith
+int majority_element = nums[0] ;   // Maintaining and considering the Majority element nums[0]
+int count = 1;  //Start with 1 
+
+
+for(int i =1 ; i<nums.length ; i++)
+{
+   if(  majority_element == nums[i] )
+   {count++ ; }   // If next element is same the increase Count ;
+   else
+   {  count--;}   // it next element is not same then decrease count
+
+if(count == 0)  //and if count get zero the change the majority element 
+{
+    count = 1;
+    majority_element = nums[i] ;
+}
+}
+return majority_element;  // return last maintained majority Element
+    
+    }
+}
+
+
+
+
+//Link -->https://www.programming9.com/tutorials/competitive-programming/428-moore-s-voting-algorithm
