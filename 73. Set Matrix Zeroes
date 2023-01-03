@@ -1,0 +1,56 @@
+Link : https://leetcode.com/problems/set-matrix-zeroes/description/
+
+//Take Reference of Matrix if needed : https://codegym.cc/groups/posts/matrix-in-java-2d-arrays
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+int m = matrix.length; // Row Length (Horizontal count)
+int n = matrix[0].length ;// column element elements   (element present in vertical list))
+
+Solution s = new Solution() ;
+
+int newArray[][] = new int[m][n] ; // keep a copy of old array . 
+// If you do it on same matrix updated zero willl make whole matrix to zero
+
+
+for(int row = 0 ; row<m ; row++)
+{
+        for(int col = 0 ; col<n ; col++)
+        {
+         newArray[row][col] = matrix[row][col] ;
+        }
+   
+}
+
+for(int row = 0 ; row<m ; row++)
+{
+        for(int col = 0 ; col<n ; col++)
+        {
+ // tracking zero from copied array not from original array            
+            if(newArray[row][col]   == 0) 
+            {
+                //updating original matrix
+                s.ConvertRowOrColumnToZero(row, col, matrix ) ;
+            }
+
+        }
+        
+}
+    }//setzeros method
+
+
+//Converting Row and colum to Zero 
+  public void ConvertRowOrColumnToZero(int row , int col , int  matrix[][])
+    {
+        for(int i = 0 ; i<matrix[0].length ; i++ )    // Tricky part  i<matrix[0].length   . It check for the number of column for respective  row
+       {
+           matrix[row][i] = 0 ;
+       }
+
+        for(int j = 0 ; j<matrix.length ; j++  )  
+       {
+             matrix[j][col] = 0 ;
+       }
+    }
+
+}
