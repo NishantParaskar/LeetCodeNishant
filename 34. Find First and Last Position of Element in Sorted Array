@@ -1,0 +1,65 @@
+// Name : 34. Find First and Last Position of Element in Sorted Array
+//Problem : https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/
+
+
+// Code:
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+
+int i = 0;
+int firstIndex = -1 ;
+int LastIndex =  -1 ;
+
+
+boolean firstIndexfound = true ;
+
+
+     int arr[] = new int[2];
+       arr[0]=firstIndex ;
+       arr[1]=firstIndex ;
+
+         // if nums Array lenghth is 0 the return -1 -1 ; . (note : we can use less variable to avoid space)
+     if(nums.length ==0)
+     {
+     return arr ;
+         
+     }
+   
+
+        while(i <nums.length  && nums.length >0)
+        {
+
+           // Setting first index
+                 if((nums[i] == target)  && firstIndexfound  )
+                {
+                    firstIndex = i ;
+                    firstIndexfound = false ;
+                    arr[0]=firstIndex ;
+                }
+                  // Setting Last index
+                else if((nums[i] == target) )
+                {
+                      LastIndex = i;
+                     arr[1]=LastIndex ;
+                }
+        
+                
+              
+         i++ ;
+        }
+
+        
+        // if First Index is Set then Last index is not set because it is not found in array
+        // then set Last index as first index
+                    if(firstIndex != -1   && LastIndex  == -1)
+                    {
+                        arr[1]=firstIndex;
+                    }
+
+   
+
+
+        return arr ;
+        
+    }
+}
