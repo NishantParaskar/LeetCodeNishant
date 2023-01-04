@@ -1,0 +1,85 @@
+//problem :
+
+//code :
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+
+
+int k = 0 ; 
+int l = 0;
+
+
+int r= matrix.length;
+int c = matrix[0].length;
+List ls = new ArrayList() ;
+while(k <r && l< c)
+{  
+
+                // Travel left   ---->   right    use (1. Constant row (=k)  && 2 change Column (<=c-1))
+                  if(k<r)
+   {
+            for(int i = l  ;i<c ;i++)
+            {
+                ls.add(matrix[k][i]);
+            }
+            k++;
+
+   }
+
+     if(l<c)
+            {
+                // Travel Top    ---->   Bottom   use (2. Constant column(=k) && 2 change row(=r-1))
+            for(int i =k   ;i<r ;i++)
+            {
+                ls.add(matrix[i][c-1]);
+            }
+            c--;
+            }
+
+//When it goes inside inner loop()
+  if(k<r)
+   {
+                // Travel right   ----> left  use (3. Constant row(r)  && 2 change Column (=C++))
+            for(int i =c-1  ;i>=l ;i--)
+            {
+                ls.add(matrix[r-1][i]);
+            }
+
+            r--;
+
+  }
+            if(l<c)
+            {
+                // Travel Bottom  ---> top   use (4. Constant column() && 2 change row())
+                for(int i =r-1 ;i>=k ;i--)
+            {
+                ls.add(matrix[i][l]);
+            }
+
+            
+            l++ ;
+              }
+
+}
+
+
+
+return ls ;
+        
+    }
+}
+
+
+
+
+    // Travel left   ---->   right    use (1. Constant row  && 2 change Column)
+
+    // Travel Top    ---->   Bottom   use (2. Constant column && 2 change row)
+
+    // Travel right   ----> left  use (3. Constant row  && 2 change Column)
+ 
+    // Travel Bottom  ---> top   use (4. Constant column && 2 change row)
+    
+    
+    
+    //Reference Link if required :https://www.youtube.com/watch?v=dm25MsWHYuk&list=PL6Zs6LgrJj3tDXv8a_elC6eT_4R5gfX4d&index=119
