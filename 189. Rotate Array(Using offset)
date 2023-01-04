@@ -1,0 +1,42 @@
+//Another approch : Using offset 
+
+class Solution {
+    public void rotate(int[] nums, int k) 
+    {
+
+  int offset = nums.length  - k % nums.length ;
+  int arr[] =  new int[nums.length] ;
+       for(int i = 0  ; i<nums.length ;i++)
+       {
+         int finalIndexvalue =  (offset + i ) % nums.length ;
+         arr[i] = nums[finalIndexvalue] ;
+
+       } 
+
+ for(int i = 0  ; i<nums.length ;i++)
+       {
+
+        //System.out.print(arr[i] + "  ") ;
+        nums[i] = arr[i];
+
+       }       
+
+    }
+
+
+    //reverse function
+    void  reverse (int start , int end , int nums[])
+    {
+   while(start < end)
+   {
+          int temp = nums[ start ] ;
+      nums[start] =nums[end] ;
+      nums[end]  = temp ;
+
+      start++ ;
+      end-- ;
+   }
+    }
+}
+
+
