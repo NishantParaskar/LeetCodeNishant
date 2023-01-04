@@ -1,0 +1,48 @@
+Problem : https://leetcode.com/problems/single-number/submissions/871209080/
+
+// Issue while solving we can convert directly int[] to Interger . when you have to work with Hashset or any other collection Class.
+// So for that i used the Stream for conversion int[] to Integer[] ;
+
+
+
+//Question : There are all duplicate element except one element that we have to find eg (2 2  3 1 3) here 1 is not duplicate so 1 is answer.
+ 
+import java.util.*;
+
+class Solution {
+
+    public int singleNumber(int[] nums) {
+ 
+        Integer[] boxedArray = Arrays.stream(nums) // IntStream
+                                .boxed()                // Stream<Integer>
+                                .toArray(Integer[]::new); 
+
+                                
+        HashSet hs = new HashSet();
+        for(int i = 0 ; i<nums.length ; i++)
+        {
+            if(hs.contains( (Integer)nums[i]))
+            {
+                hs.remove(nums[i]) ; 
+            }
+            else
+            {
+                 hs.add(   (Integer)nums[i] ) ;
+            }
+        }
+
+
+
+
+// once all duplicate element is removed the only one last single element will remain which is the answer
+  for(Object i : hs)
+        {
+        Integer intobject = (Integer)i;
+        // Returns the value of this Integer as an int
+        int ii = intobject.intValue();
+            return ii;
+        }
+      
+       return 0;
+    }
+}
