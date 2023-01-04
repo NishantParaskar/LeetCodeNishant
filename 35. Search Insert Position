@@ -1,0 +1,28 @@
+//Problem :https://leetcode.com/problems/search-insert-position/submissions/871290881/ 
+
+
+//code:
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+
+        int i =0  ;
+
+        while(i<nums.length)
+        {
+                if(target == nums[i])
+                {
+
+                    return i ; // if matched
+                }
+
+                if(target < nums[i])
+                {
+                    return i ;// if not matched
+                }
+
+                i++ ;
+        }
+     return i;    // if all element is at corrent position then target element 
+                  //  we will add after the nums array (i.e at last position )       
+    }
+}
