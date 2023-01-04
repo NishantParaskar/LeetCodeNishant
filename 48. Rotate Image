@@ -1,0 +1,57 @@
+//Problem link :https://leetcode.com/problems/rotate-image/submissions/871178246/
+
+//SOLUTION :
+//1.Transpose matrix   <---Original matrix 
+//2. Swap matrix(Reverse each Row)   on transpose Matrix
+//3. Copy Final Swap matrix to Original Matrix
+
+
+//code:
+class Solution {
+    public void rotate(int[][] matrix) {
+
+
+        int m = matrix.length ; // size of row 
+        int n = matrix[0].length; // size of element present in column 0 ;
+
+int transpose[][] =new int[m][n]  ; // dummy matrix for storing the matrix
+
+for(int row = 0 ; row<m  ; row++)
+{
+    for(int col  = 0  ; col <n  ;col++ )
+    {
+ 
+          transpose[row][col] = matrix[col][row] ; // copy colum to row in transpose matrix
+
+    }
+}
+
+//Reverse each row data in matrix
+for(int row = 0 ; row<m  ; row++)
+{
+    for(int col  = 0  ; col <n/2  ;col++ )
+    {
+
+        int temp = transpose[row][col] ;
+    transpose[row][col] = transpose[row][m-1-col]; //Why ?? (m-1 )i.e because index starts from 0;
+        transpose[row][m-1-col] = temp; 
+
+    }
+}  
+
+
+//final output will be come from  copy from the transpose matrix to original matrix 
+for(int row = 0 ; row<m  ; row++)
+{
+    for(int col  = 0  ; col <n  ;col++ )
+    {
+  matrix[row][col] = transpose[row][col];
+
+    }
+}  
+
+
+
+        
+    }
+}
