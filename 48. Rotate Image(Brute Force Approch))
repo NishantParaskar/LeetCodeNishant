@@ -1,0 +1,38 @@
+class Solution {
+    public void rotate(int[][] matrix) {
+// This Approch will be use for n * m matrix
+// other Approch using transpose that matrix should be always (n*n)  , Also optimize approch
+
+        int m = matrix.length ; // size of row 
+        int n = matrix[0].length; // size of element present in column 0 ;
+
+int dummyArray[][] =new int[m][n]  ; // dummy matrix for storing the matrix
+
+
+//Reverse each row data in matrix
+for(int row = 0 ; row<m  ; row++)
+{
+    for(int col  = 0  ; col <n  ;col++ )
+    {
+
+      dummyArray[row][col]   = matrix[m-1-col][row]; 
+
+    }
+}  
+
+
+//final output will be come from  copy from the transpose matrix to original matrix 
+for(int row = 0 ; row<m  ; row++)
+{
+    for(int col  = 0  ; col <n  ;col++ )
+    {
+  matrix[row][col] =dummyArray[row][col];
+
+    }
+}  
+
+
+
+        
+    }
+}48. Rotate Image
