@@ -1,0 +1,65 @@
+Link : https://leetcode.com/problems/3sum/description/
+
+//Code :
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+
+int arr[] = new int[3] ;
+
+int startPt = 0 ;
+
+Arrays.sort(nums) ;
+Set<List<Integer>>  list = new HashSet() ;  // there might a possiblity of having muliple same tripltes so avoid that we use set .
+List<Integer> ls = new ArrayList() ;
+while(startPt <nums.length-2  )
+{
+int middlePt = startPt +1 ;
+int endpt = nums.length -1  ;
+
+
+    while(middlePt < endpt)
+    {
+        int midPtEndpt =nums[middlePt] +    nums[endpt]  ;
+        int result = nums[startPt] +   nums[middlePt] +    nums[endpt]  ;
+
+        if(result == 0)
+        {
+           System.out.println(result + "||| startpt: "+nums[startPt] + "midpt :  " +nums[middlePt]   +" Endpt : "+ nums[endpt] );
+           list.add(Arrays.asList(nums[startPt] ,nums[middlePt] ,nums[endpt])  ) ;
+   
+           
+        }
+        if(result <0  )
+        {
+             middlePt++ ;
+        }
+        else
+        { 
+            endpt-- ;
+        }
+
+    }
+
+
+    startPt++ ;
+ 
+
+}
+
+
+ return  new ArrayList<>(list) ;
+
+        
+        
+    }
+}
+
+
+
+//More Understanding - https://www.youtube.com/watch?v=WdaeixEeAVs
+// Solution:
+// before proceeding with three Pointer concept for three sum.
+
+// Array should be sorted for 2 sum and 3 sum .
+// 1.Two pointer concept for 2 sum should be understand first 
+// 2. Then Apply three pointer concept with help of two pointer concept
