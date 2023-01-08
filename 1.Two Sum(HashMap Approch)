@@ -1,0 +1,34 @@
+Link :https://leetcode.com/problems/two-sum/description/
+
+import java.util.Arrays;
+import java.lang.*;
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+
+int arr[] = new int[2];
+HashMap hm = new HashMap() ;
+
+    for(int i = 0 ; i <nums.length ; i++)
+    {
+            int res = target - nums[i] ;
+            if(hm.containsKey(res))  // check value is present in HashMap
+            {
+                Integer intobject = (Integer)hm.get(res) ;
+                arr[0] =    intobject.intValue();    ;
+                arr[1] = i  ;
+            }
+
+            else
+            {
+                hm.put(nums[i] ,i);  // else add each element in  HashMap
+            }
+    }
+
+return arr ;
+    
+    }
+}
+
+//Solution Approch 1(HashMap ):
+// Adding the element in HashMap (a+b = target (i,e target - b = a)))
+// if value present in hashmap then take it index and current iterating index. then there sum of value is Target .
