@@ -1,6 +1,3 @@
-Link : https://leetcode.com/problems/3sum/description/
-
-//Code :
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
 
@@ -11,20 +8,20 @@ int startPt = 0 ;
 Arrays.sort(nums) ;
 Set<List<Integer>>  list = new HashSet() ;  // there might a possiblity of having muliple same tripltes so avoid that we use set .
 List<Integer> ls = new ArrayList() ;
-while(startPt <nums.length-2  )
+while(startPt <nums.length-2  )  // TC : O(N)
 {
 int middlePt = startPt +1 ;
 int endpt = nums.length -1  ;
 
 
-    while(middlePt < endpt)
+    while(middlePt < endpt)  // TC : O(N)
     {
         int midPtEndpt =nums[middlePt] +    nums[endpt]  ;
         int result = nums[startPt] +   nums[middlePt] +    nums[endpt]  ;
 
         if(result == 0)
         {
-           System.out.println(result + "||| startpt: "+nums[startPt] + "midpt :  " +nums[middlePt]   +" Endpt : "+ nums[endpt] );
+          /// System.out.println(result + "||| startpt: "+nums[startPt] + "midpt :  " +nums[middlePt]   +" Endpt : "+ nums[endpt] );
            list.add(Arrays.asList(nums[startPt] ,nums[middlePt] ,nums[endpt])  ) ;
    
            
@@ -63,3 +60,9 @@ int endpt = nums.length -1  ;
 // Array should be sorted for 2 sum and 3 sum .
 // 1.Two pointer concept for 2 sum should be understand first 
 // 2. Then Apply three pointer concept with help of two pointer concept
+
+
+//Total TC  : 1. For outer while/for loop O(N)    +     2.For inner While loop  TC : O(N)   
+//             ---> // TC : O(N^2)
+
+
