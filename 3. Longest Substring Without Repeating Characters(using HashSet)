@@ -1,0 +1,45 @@
+Problem : 3. Longest Substring Without Repeating Characters
+Link : https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+
+//Code :
+
+
+import java.util.*;
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+
+int lowpt =  0;
+int endPt =  0 ;
+
+int end = s.length() ;
+
+int counter = 0;
+HashSet<Character> hm = new HashSet() ;
+while(endPt< end)
+{
+char ch = s.charAt(endPt) ;
+
+if(hm.contains(ch))//Realeasing concept i,e  // Character not found in HashSet then Add in HashSet .  // Character not found in HashSet then Add in HashSet .
+{
+   hm.remove(s.charAt(lowpt) ) ;
+   lowpt++ ;
+}
+else //   // else remove till that position where character found (Releasing concept)                  
+//Aquiring concept  : Remove Tille the eg if ""abcdc""    and c found then remove a , then b and then c  ;
+{
+    hm.add( ch) ;
+    endPt++ ;
+    counter = Math.max( counter , hm.size() )  ;
+    
+}
+
+
+}
+
+
+
+return counter ;
+
+    }
+}
