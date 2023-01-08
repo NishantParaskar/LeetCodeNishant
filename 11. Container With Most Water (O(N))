@@ -1,0 +1,95 @@
+Link : https://leetcode.com/problems/container-with-most-water/description/
+
+Time Complexity is O(N)
+
+//Code :
+class Solution {
+    public int maxArea(int[] height) {
+
+int left = 0;
+int right =  height.length -1 ;
+int result = 0 ;
+
+    while(left< right)
+    {
+
+
+int leftHeight  = height[left] ;
+int rightHeight =  height[right] ;
+
+int breadthDistance = right - left ;
+
+int minimumHeight = Math.min(leftHeight,rightHeight);
+
+int waterArea = minimumHeight *  breadthDistance ;
+
+result = Math.max(result , waterArea);
+
+if(leftHeight < rightHeight)
+{
+    left++ ;
+}
+else
+{
+    right-- ;
+}
+
+        
+    }
+
+
+return result ;
+    }
+}
+
+
+
+
+// Solution Explained By :https://www.youtube.com/watch?v=ZHQg07n_tbg
+
+
+//*****************************************************************************************************************************
+//*****************************************************************************************************************************
+//*****************************************************************************************************************************
+//*****************************************************************************************************************************
+//*****************************************************************************************************************************
+/// Same Approch but coding is different 
+
+//code :
+class Solution {
+    public int maxArea(int[] height) {
+
+int low = 0;
+int high =  height.length -1 ;
+int result = 0 ;
+
+int arr[] = new int[2] ;
+    while(low< high)
+    {
+
+        int bredthDistance = high   - low ;
+        int lowestHeight = 0 ;
+
+            if(height[low]<height[high])
+            {
+                lowestHeight =height[low] ;
+                low++ ;
+            }
+            else
+            {
+                lowestHeight =height[high] ;
+                high --;
+            }
+
+            if(result < (bredthDistance * lowestHeight))
+            {     result = bredthDistance *  lowestHeight;
+              	System.out.println(bredthDistance + " * " + lowestHeight + " = "+ result);
+           
+            }
+        
+    }
+
+
+return result ;
+    }
+}
