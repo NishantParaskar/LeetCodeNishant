@@ -1,0 +1,43 @@
+link : https://leetcode.com/problems/two-sum/description/
+
+//Logic is not working you consider unsorted array  .
+         //Logic is working but it require the array to be Sorted . 
+        //If you are using this logic then you have to maintain the index order before
+
+import java.util.Arrays;
+import java.lang.*;
+class Solution {
+    public int[] twoSum(int[] nums, int target)
+     {
+
+
+
+            int arr[] = new int[2];
+
+            int low = 0 ;
+            int high = nums.length -1;
+                while(low  <high)
+                {
+                    if(target < (nums[low] + nums[high]))
+                    {
+                        high-- ;
+                    }
+                    else if (target > (nums[low] + nums[high]))
+                    {
+                        low++ ;
+                    }
+                    else
+                    {
+                        arr[0] = low;
+                        arr[1] = high;
+                        return arr ;
+                    }
+
+                }
+     return arr ;
+    }
+}
+
+//Solution Approch 1(HashMap ):
+// Adding the element in HashMap (a+b = target (i,e target - b = a)))
+// if value present in hashmap then take it index and current iterating index. then there sum of value is Target .
