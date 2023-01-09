@@ -1,0 +1,59 @@
+Link : https://leetcode.com/problems/group-anagrams/description/
+
+//code :
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+
+ HashMap< HashMap<Character,Integer>,ArrayList<String> > bmap = new HashMap() ;
+        for(String str : strs)
+        {
+          HashMap<Character, Integer> smap = new HashMap() ;
+          char charArray[] = str.toCharArray() ;
+          for(int i = 0 ; i<  charArray.length ; i++)
+          {
+              char ch = charArray[i] ;
+      
+                  smap.put((Character)ch,   smap.getOrDefault((Character)ch,0)  +1) ; 
+          
+          }
+
+
+//Checking for every String 
+          if(bmap.containsKey(smap) == false)
+          {
+              ArrayList ls = new ArrayList() ;
+              ls.add(str) ;
+              bmap.put(smap, ls) ;
+          }
+          else
+          {
+             
+            ArrayList<String> a =  bmap.get(smap) ;  /// updating that List with New String (whose keys repeated)
+             a.add(str);
+          }
+        }
+        List <List<String>> res = new ArrayList<>() ;
+        for(ArrayList<String> s : bmap.values()){
+            res.add(s) ;
+        }
+        
+        return res ;
+    }
+}
+
+/*
+
+// Solution explaination:
+
+Step 1 : Create HashMap of HashMap (i.e  HashMap< HashMap<Character,Integer>,ArrayList<String> >) 
+
+Step 2 . Iterationg to all String one by one and adding in the HashMap of  HashMap<Character,Integer> .
+         Every String will be having seperate HashMap  key
+
+Step 3 : Now final Checking Every String and its keys in HashMap<Character,Integer>  . 
+          1.If key present then fetch from HashMap<Character,Integer> and update existing Arraylist        
+          2.If key Not Present then add list for that key. 
+
+
+
+          */
