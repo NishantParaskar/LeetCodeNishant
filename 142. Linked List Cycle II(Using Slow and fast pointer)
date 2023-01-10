@@ -1,0 +1,78 @@
+Link :https://leetcode.com/problems/linked-list-cycle-ii/description/
+
+
+
+//code:
+
+Step 1 : Find loop Detection First .
+Step 2 : Find the Loop Cycle index point
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+
+
+        ListNode slow = head ;
+        ListNode fast = head ;
+
+        while( fast != null  && fast.next !=  null)
+        {
+
+          slow = slow.next ;
+          fast = fast.next.next;
+
+            if(slow == fast) // step 1 : Loop detected
+            {
+                //1st way  // Find the Loop Cycle index point
+               return getstartNode(slow , head);
+
+
+ /*           2nd way :    // Find the Loop Cycle index point
+    while(slow != head){
+                  //  fast = fast.next;
+                  slow = slow.next;
+                    head = head.next;
+                }
+                return slow ;
+*/
+
+/*3nd way :   // Find the Loop Cycle index point
+             while(fast != head){
+                    fast = fast.next;
+             
+                     head = head.next;
+                 }
+                return fast;
+  */          
+            }
+
+
+        }
+              return null;
+    }
+
+
+
+
+public ListNode getstartNode(ListNode slow , ListNode head )   // Find the Loop Cycle index point
+{
+    ListNode temp = head ;
+    while(slow != temp)
+    {
+        temp = temp.next ;
+        slow = slow.next;
+    }
+    return slow;
+}
+
+}
