@@ -1,0 +1,53 @@
+
+Link : https://leetcode.com/problems/remove-linked-list-elements/submissions/875674286/
+
+
+//Code:
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+
+    if(head == null) return null;  // if head is null then return null
+        
+        while(head!=null)  // change the head position till key value match during start only
+        {
+            if(head.val == val){
+                head = head.next;
+            }else{
+                break;
+            }
+        }
+        
+        ListNode p = head;  // final head position after ignore matched element which occur duirng start.
+       
+        
+        if(p == null) return null; //// because head is equal to null then return null ;
+
+
+
+while(p.next !=  null)
+{
+        if(p.next.val == val)
+        {
+             ListNode q = p.next ;
+             p.next = q.next ;
+        }
+        else
+        {
+            p = p.next ;           
+        }
+}    
+
+        return head ; // because head is still at same place when  head!=null
+    }
+}
