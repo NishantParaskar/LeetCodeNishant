@@ -1,0 +1,38 @@
+
+//Link : https://leetcode.com/problems/maximum-depth-of-binary-tree/submissions/878077802/
+//Link : https://leetcode.com/problems/maximum-depth-of-binary-tree/description/
+
+//code:
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int maxDepth(TreeNode root) {
+
+if(root == null) // if nood at any point becomes null the return 0 ;
+{
+    return  0;
+}
+
+int left = maxDepth(root.left) ;   // check for left depth
+int right = maxDepth(root.right)  ; // check for right depth
+
+return 1+ Math.max(left,right);  // Choose max depth from left or right and add 1 to it .
+
+
+
+        
+    }
+}
