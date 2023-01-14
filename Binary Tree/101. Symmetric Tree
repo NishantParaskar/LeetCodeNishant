@@ -1,0 +1,49 @@
+//Link :https://leetcode.com/problems/symmetric-tree/submissions/878050906/
+
+
+
+//Code:
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+TreeNode p= root.left ;
+TreeNode q =root.right ;
+return SymmetricCheck(p , q) ;
+
+   
+    }
+
+ static boolean SymmetricCheck(TreeNode p, TreeNode q )
+{
+if(p == null || q == null)
+{
+    return p == q ;   // Break condition will return true only if node on both side(left and right) is same .
+}
+return ( p.val == q.val  && SymmetricCheck(p.left ,q.right)  &&  SymmetricCheck( p.right ,q.left) ) ;
+}
+
+
+}
+
+
+/*
+// Why return 
+1.  p.val == q.val   i.e left and right element value should be same  to Achive Symmetry
+2. SymmetricCheck(p.left ,q.right)  : Recursive call: PRoot.left should be match with QRoot.right to Achive Symmetry;
+3. SymmetricCheck( p.right ,q.left)  : Recursive call: PRoot.Right should be match with QRoot.left to Achive Symmetry;
+*/
