@@ -1,0 +1,66 @@
+Problem Link :https://leetcode.com/problems/same-tree/submissions/878127458/
+
+
+//code:
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+      
+    Queue<TreeNode> queue = new LinkedList();
+    queue.add(p);
+    queue.add(q);
+
+//above both root(p and q) are added in queue .
+    while(!queue.isEmpty())
+    {
+
+      // to poll element 1 from Tree P and Element 1 from Tree Q  from queue.
+      TreeNode first  =queue.poll();
+      TreeNode second = queue.poll(); 
+
+
+    if(first == null && second == null)
+    {
+        continue; // once all nodes are iterated then we will get out of loop
+    }
+     // to check element 1 from Tree P and Element 1 from Tree Q  are equal or not if not then return false ;
+    else if(first ==null || second ==null || first.val != second.val)
+    {
+       return false ;
+    }
+
+// to check element 1 from Tree P and Element 1 from Tree Q  then add its lefta and right child in //queue
+
+ queue.add(first.left);
+ queue.add(second.left);
+ queue.add(first.right);
+ queue.add(second.right);
+
+ //once added and then poll element and check first 2 element are equal or not else return false .
+ // if equal then add again left child and right child and this will goes on.
+
+
+    }
+return true ; // if all goes well and get out of loop 
+    }
+}
+
+
+//Video Explaination link :https://www. youtube.com/watch?v=YPIaDOU4ZWc
+
+Time complexity : O(N)  : it check for all nodes once
+Space Complexity :O(N)  : it store all node once in Queue.
