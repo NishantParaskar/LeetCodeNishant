@@ -1,0 +1,68 @@
+
+// Solution 
+//Link : https://www.youtube.com/watch?v=EBNPu0GgM64&t=844s
+//1.Created a Bucket List and Store Repeated element on its frequency index In bucket List
+//2. Then Iterating in revere the bucketList till k
+
+
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+
+List<Integer> bucketList[] = new List[nums.length +1] ;
+
+HashMap<Integer ,Integer> frequencyMap = new HashMap() ;
+
+
+for(int num : nums)
+{
+frequencyMap.put(num,frequencyMap.getOrDefault(num ,0) + 1 ) ;
+}
+
+// TC:O(n) : We are iteration hashmap once :
+// SpaceComp : O(N) - because we are storing in Bucket list and Interating 
+for(int key : frequencyMap.keySet())
+{
+    int frequency =  frequencyMap.get(key) ;
+    if(bucketList[frequency] ==  null)
+    {
+    bucketList[frequency] = new ArrayList() ;
+    }
+  bucketList[frequency].add(key) ;
+}
+
+
+int arr[] = new int[k];
+int counter =0 ;
+// Time:O(n)
+for(int position = bucketList.length-1 ; position > 0  && counter <k; position--)
+{
+    if(bucketList[position] !=  null)
+    {
+      for(Integer data :bucketList[position] )
+      {
+          arr[counter] =  data ;
+          counter++ ;
+      }
+
+
+     
+
+    }
+
+}
+
+
+
+
+
+System.out.println(frequencyMap  + " "+ bucketList.length) ;
+
+return arr;
+
+    }
+
+
+
+
+}
+
