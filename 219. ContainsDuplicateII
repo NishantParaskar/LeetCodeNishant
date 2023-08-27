@@ -1,0 +1,53 @@
+problem :https://leetcode.com/problems/contains-duplicate-ii/submissions/
+
+
+Approch :
+/*Used Hashmap for Storing key value
+Here we have to check the Duplicate elementb present give Window i.e (i - j) <=k .
+If not present then add again then element in HashMap and check again
+*/
+//Code:
+
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+
+HashMap<Integer , Integer> hm = new HashMap() ;
+
+
+for(int i = 0 ; i< nums.length ; i++)
+{
+              
+     if(hm.containsKey(nums[i])) // Already present
+     {
+         int pastIndex = hm.get(nums[i]);
+
+         if( Math.abs( pastIndex - i) <=k  )
+         {
+             return true ;
+         }
+         else  // if faild to give output TRUE then add again
+         {
+             System.out.println("Step :pastindex-"+pastIndex + "|i :"+i);
+               hm.put(nums[i] , i); // add new element
+         }
+
+
+
+     }
+     else
+     {
+         hm.put(nums[i] , i); // add new element
+     }
+
+
+}
+     return false;
+
+    }
+  
+}
+
+
+
+//Solution for reference :
+//https://www.youtube.com/watch?v=tp4JivY1-Mk
