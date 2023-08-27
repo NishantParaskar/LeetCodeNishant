@@ -1,0 +1,58 @@
+https://leetcode.com/problems/reach-a-number/submissions/
+
+
+//Code:
+class Solution {
+    public int reachNumber(int target) {
+
+//Make target abs ---> Get positive target value (step to get negative target is the same as to get positive value due to symmetry).
+        //Step1"" Jump on Side right check did you reach correct target in respective jumps
+        // then thats the Answer 
+    
+           // Step 2 :check uusing if  
+        // Step 3 : If not reach in Those step then we have to perform addition steps 
+        // After peroforming Additional Step check  (sum - target)   = Value 
+        // If this "Value"" is dividable by 2 then Fine then return Steps its your answer
+
+        // Why checking is it Dividable . because its symmetric -3 -2 -1 0 1 2 3  
+
+
+     target = Math.abs(target);
+        int steps = 0 ;
+        int sum =  0;
+        boolean needMoreStepFlag = false; 
+
+while(sum<target)
+{
+    steps++ ;
+    sum = sum + steps;
+
+}
+        if((sum -target) % 2 !=0 )
+        {
+        needMoreStepFlag = true ;   // we need extra Step to reach  Target
+        }
+        else
+        {
+            needMoreStepFlag  = false ; // no need extra Step We are on Target
+        }
+
+//Step 3 
+if( needMoreStepFlag   )
+{
+    //Step 3 
+    while((sum -target) % 2 !=0 )
+    {
+       steps++ ;
+       sum = sum + steps;
+    }
+
+
+}
+
+return steps ;
+
+
+        
+    }
+}
