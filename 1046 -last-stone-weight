@@ -1,0 +1,99 @@
+https://leetcode.com/problems/last-stone-weight/submissions/
+
+
+//Code
+
+class Solution {
+    public int lastStoneWeight(int[] stones) {
+        //if single element present
+if(stones.length == 1)
+{
+    return stones[0] ;
+}
+     
+
+         Queue<Integer> maxHeap = new PriorityQueue<>((a,b) -> b-a) ;
+        for(int stone : stones)  // add in priorityQueue
+        {
+            maxHeap.add(stone) ;
+        }
+
+
+        while(maxHeap.size() >1  )
+        {
+             int maxfirst = maxHeap.remove() ;
+             int maxSecond = maxHeap.remove() ; 
+             if(maxfirst  == maxSecond)
+             {
+                 continue ;
+             }
+
+
+               int result = Math.abs(maxfirst - maxSecond)   ;
+               maxHeap.add(result) ;
+        }
+
+
+if(maxHeap.size() == 1)  //in case of all single element is Prensent
+{
+      return maxHeap.peek();
+}
+
+else if(maxHeap.size() == 0) //in case of all element destroyed
+{
+      return 0;
+}
+else
+{
+    return 0;
+}
+  
+
+
+    }
+}
+
+
+//* SOLUTION 
+  // Max heap approach:
+    // add all the stones to the maxHeap
+    // run while loop till size()>1; get two stone from the heap. add the  absolute difference;
+    // at the end return the remininag last stone from the heap;
+
+
+
+// input : 2 7 4 1 8 1
+// ----------------------------
+// priorityQueueAdd
+ 
+//  Step 1 :
+//  8 7 4  2 1 1   ==> 8 - 7    ===> 1    
+//  Add in 1 in PQ    i.e  4 2 1 1 1 
+  
+
+
+ 
+//  Step 2 :
+//  4 2 1 1 1   ==> 4 - 2    ===> 2   
+//  Add in 2 in PQ  i.e 2 1 1 1 
+  
+
+
+   
+//  Step 3 :
+// 2 1 1 1    ==> 2 - 1    ===> 1    
+//  Add in 1 in PQ   1 1 1
+  
+
+
+   
+//  Step 4 :
+// 1 1 1   ==> 1 - 1    ===> Destroye     
+//   Destroye dont add in PQ     i.e 1
+
+
+// Only one element left in PriorityB Queue .
+// ==> 1
+  
+
+
