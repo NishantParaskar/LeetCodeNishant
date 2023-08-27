@@ -1,0 +1,52 @@
+problem : https://github.com/avaibhav54/leetcode/blob/main/290-word-pattern/290-word-pattern.java
+
+Code:
+
+class Solution {
+    public boolean wordPattern(String pattern, String s) {
+        HashMap<Character , String>  hm = new HashMap();
+        int n = pattern.length();
+        boolean flag = true ;
+        String arr[] = s.split(" ") ;
+
+        // base case if pattern size !=  arr.size  ===> false
+        if(n !=  arr.length)
+        {
+            return false   ;
+        }
+
+        for(int i = 0 ; i<n ; i++)
+        {
+         // check already added or not if added check for key and Added value for Same key is same or not
+         if(!hm.containsKey(pattern.charAt(i)) )  //Key Not Content  then Add Key and Value in Hashmap
+         {
+
+
+              if(hm.containsValue(arr[i]))return false;   // value is already present then Dont add same value other key return false
+
+           // Add Key value in map First
+            hm.put(pattern.charAt(i) ,arr[i]);
+            		System.out.println(hm);
+         }
+
+        else // if Key Already present in HashMap . Now Check Mapping of value of alr
+        {
+
+          
+            if(hm.get(pattern.charAt(i)).toString().equals(arr[i]) )
+            {
+  
+            }
+            else
+            {
+                flag =  false;
+                break;
+            }
+        }
+        }
+
+return flag ;
+
+        
+    }
+}
