@@ -1,0 +1,51 @@
+problems :https://leetcode.com/problems/isomorphic-strings/submissions/
+
+
+
+
+//code:
+
+
+// Two strings are called isomorphic if and only if the characters in the first string can be replaced by any character(including itself) at all points of its occurrence while keeping the relative order of the characters the same. No two characters can map to the same character.
+
+
+//Approch : use Hashmap to detech key and value from (S) & (T) have correct mapped once after the added in HashMap
+
+
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+
+        HashMap<Character , Character> hm = new HashMap() ;
+
+        if(s.length() != t.length())
+        {
+        return false;
+        }
+
+        for(int i = 0 ; i< s.length() ; i++)
+        {
+
+
+                    
+            if(hm.containsKey(s.charAt(i))) // Already present
+            {
+
+                        if( hm.get(s.charAt(i)) != t.charAt(i))// special Case ":" Current Key's value didnt matcvh with already added key's value ==> false
+                        {
+                        return  false;
+                        }
+            }
+            
+            else if(hm.containsValue(t.charAt(i)))  // special Case ":" value is already . Other key is trying to add similar value then return false;
+            {
+            return false;
+            }
+                  hm.put(s.charAt(i) , t.charAt(i)); // add new element  
+            
+        }
+
+
+    return true ;
+        
+    }
+}
