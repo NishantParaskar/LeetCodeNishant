@@ -1,0 +1,30 @@
+Problem : https://leetcode.com/problems/ransom-note/submissions/
+
+
+//code
+
+// Approch:
+
+// use Hashmap add Character value  (+ 1) for each chacter present in  "Magazine""
+//use same Hashmap remove/reduce value of Character( -1) for each character presnt in "RandomNote"" 
+// Check if any negative value is present in Hm then ---> false
+
+
+
+
+
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+	      HashMap<Character,Integer> map =new HashMap();
+	        for(char ch:magazine.toCharArray())map.put(ch,map.getOrDefault(ch,0)+1);  // Charactor Element added with Positive value
+	        for(char ch:ransomNote.toCharArray())map.put(ch,map.getOrDefault(ch,0)-1);  // Charactor Element added by reducing (negative) value
+	        for(char ch:map.keySet())
+	        {
+	        	
+	            if(map.get(ch)<0) {
+                    return false;
+                }
+	        }
+              return true; // else true
+    }
+}    
